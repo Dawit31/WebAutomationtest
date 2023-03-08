@@ -41,6 +41,28 @@ class TestStringMethods(unittest.TestCase):
         data = driver.find_element(By.XPATH,"//body/div[@class='master-wrapper-page']/div[@class='master-wrapper-content']/div[@class='master-wrapper-main']/div[@class='center-2']//form[@action='/login']//ul/li[.='No customer account found']").text
         self.assertIn("No customer account found",data)
         time.sleep(10)
+
+    def test_d_empthy_password(self):
+        driver = self.browser
+        driver.get("https://demowebshop.tricentis.com/")
+        driver.find_element(By.XPATH,"//body/div[@class='master-wrapper-page']/div[@class='master-wrapper-content']//div[@class='header-links']/ul//a[@href='/login']").click()
+        driver.find_element(By.XPATH,"/html//input[@id='Email']").send_keys("davidcancel85@gmail.com")
+        driver.find_element(By.XPATH,"/html//input[@id='Password']").send_keys("")
+        driver.find_element(By.XPATH,"//body/div[@class='master-wrapper-page']/div[@class='master-wrapper-content']/div[@class='master-wrapper-main']/div[@class='center-2']//form[@action='/login']//input[@value='Log in']").click()
+        data = driver.find_element(By.XPATH,"//body/div[@class='master-wrapper-page']/div[@class='master-wrapper-content']/div[@class='master-wrapper-main']/div[@class='center-2']//form[@action='/login']//ul/li[.='The credentials provided are incorrect']").text
+        self.assertIn("The credentials provided are incorrect",data)
+        time.sleep(10)
+
+    def test_e_incorrect_data(self):
+        driver = self.browser
+        driver.get("https://demowebshop.tricentis.com/")
+        driver.find_element(By.XPATH,"//body/div[@class='master-wrapper-page']/div[@class='master-wrapper-content']//div[@class='header-links']/ul//a[@href='/login']").click()
+        driver.find_element(By.XPATH,"/html//input[@id='Email']").send_keys("davidcancel85@gmail.com")
+        driver.find_element(By.XPATH,"/html//input[@id='Password']").send_keys("sdasdasdasdasda")
+        driver.find_element(By.XPATH,"//body/div[@class='master-wrapper-page']/div[@class='master-wrapper-content']/div[@class='master-wrapper-main']/div[@class='center-2']//form[@action='/login']//input[@value='Log in']").click()
+        data = driver.find_element(By.XPATH,"//body/div[@class='master-wrapper-page']/div[@class='master-wrapper-content']/div[@class='master-wrapper-main']/div[@class='center-2']//form[@action='/login']//ul/li[.='The credentials provided are incorrect']").text
+        self.assertIn("The credentials provided are incorrect",data)
+        time.sleep(10)
         
     def tearDown(self):
         self.browser.close()
