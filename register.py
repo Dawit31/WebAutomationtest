@@ -18,7 +18,7 @@ class TestStringMethods(unittest.TestCase):
         driver.find_element(By.XPATH,"/html//input[@id='gender-male']").click()
         driver.find_element(By.XPATH,"/html//input[@id='FirstName']").send_keys("Dawit")
         driver.find_element(By.XPATH,"/html//input[@id='LastName']").send_keys("Test")
-        driver.find_element(By.XPATH,"/html//input[@id='Email']").send_keys("davidcancel85@gmail.com")
+        driver.find_element(By.XPATH,"/html//input[@id='Email']").send_keys("davidcancel03@gmail.com")
         driver.find_element(By.XPATH,"/html//input[@id='Password']").send_keys("Test123#")
         driver.find_element(By.XPATH,"/html//input[@id='ConfirmPassword']").send_keys("Test123#")
         driver.find_element(By.XPATH,"/html//input[@id='register-button']").click()
